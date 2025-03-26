@@ -1,0 +1,45 @@
+@WebApiTest_HostAddress = http://localhost:12300
+
+GET {{WebApiTest_HostAddress}}/api/Devices
+Accept: application/json
+Authorization: Basic admin:admin
+###
+POST {{WebApiTest_HostAddress}}/api/Devices/1
+Content-Type: application/json
+Authorization: Basic admin:admin
+{
+    "Id": 1,
+    "Type": "Type_1"
+}
+###
+POST {{WebApiTest_HostAddress}}/api/Devices/2
+Content-Type: application/json
+Authorization: Basic admin:admin
+{
+    "Id": 2,
+    "Type": "Type_2"
+}
+###
+POST {{WebApiTest_HostAddress}}/api/Devices/3
+Content-Type: application/json
+Authorization: Basic admin:admin
+{
+    "Id": 3,
+    "Type": "Type_2"
+}
+###
+DELETE {{WebApiTest_HostAddress}}/api/Devices/2/
+Authorization: Basic admin:admin
+{
+    "Id": 1,
+    "Type": "Type_2"
+}
+###
+
+DELETE {{WebApiTest_HostAddress}}/api/Devices/type/Type_2
+Authorization: Basic admin:admin
+{
+    "Id": 3,
+    "Type": "Type_2"
+   
+}
